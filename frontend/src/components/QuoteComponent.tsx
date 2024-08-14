@@ -1,5 +1,5 @@
 export const Quote = () => {
-    return <div className="bg-slate-100	flex flex-col justify-center items-center p-24 w-full h-screen">
+    return <div className="bg-slate-100	flex flex-col justify-center items-center p-20 w-full h-screen">
         <div className="flex flex-col space-y-3 w-9/12">
                 <div className="text-3xl font-bold"> 
                     "The customer service I received was exceptional. The support team went above and beyond to address my concerns"

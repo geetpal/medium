@@ -7,7 +7,7 @@ interface InputFieldType{
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void
     isRequired: boolean
 }
-export const InputField = ({label, type,placeholder="", onChange, isRequired = true||false}: InputFieldType)=> {
+export const InputField = ({label, type="text",placeholder="", onChange, isRequired = true||false}: InputFieldType)=> {
     return <div className="w-full">
     <label  className="block mb-2 text-sm font-medium text-gray-900 ">{label}</label>
     <input  type={type} 

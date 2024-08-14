@@ -31,15 +31,15 @@ export const SigninComponent = () => {
 
 
     return <div className="flex flex-col justify-center items-center p-24 w-full h-screen space-y-4">
-        <div className="flex flex-col justify-center items-center space-y-2">
-            <div className="font-bold text-4xl">Login</div>
-            <div className="flex space-x-1 text-slate-400">
-                <div>Don't have an account?</div>
-                <Link to={"/signup"}>
-                    <div className="underline">Sign up</div>
-                </Link>
-            </div>
-        </div>
+                <div className="flex flex-col justify-center items-center space-y-2">
+                    <div className="font-bold text-4xl">Login</div>
+                    <div className="flex space-x-1 text-slate-400">
+                        <div>Don't have an account?</div>
+                        <Link to={"/signup"}>
+                            <div className="underline">Sign up</div>
+                        </Link>
+                    </div>
+                </div>
                 <div className="flex flex-col w-7/12 items-center space-y-4 ">
                     <InputField 
                                 isRequired={false}

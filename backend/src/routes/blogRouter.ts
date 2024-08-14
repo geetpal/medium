@@ -47,7 +47,7 @@ blogRouter.post('/', async (c) => {
     const prisma = await c.get("prisma")
     const userId = c.get("userId");
 
-
+    console.log("hello");
     const { success } = createPostInput.safeParse(body)
     if (!success) {
         c.status(400);
@@ -112,7 +112,18 @@ blogRouter.get('/bulk', async (c) => {
     const prisma = await c.get("prisma")
 
     try {
-        const blogs = await prisma.post.findMany()
+        const blogs = await prisma.post.findMany({
+            select: {
+                id: true,
+                title: true,
+                content: true,
+                author: {
+                    select: {
+                        name: true
+                    }
+                }
+            }
+        })
         if (!blogs) {
             return c.json({ message: "No blogs exists" })
         }
@@ -136,7 +147,12 @@ blogRouter.get('/:id', async (c) => {
             }, select: {
                 id: true,
                 title: true,
-                content: true
+                content: true,
+                author: {
+                    select: {
+                        name: true
+                    }
+                }
             }
         })
         if (!blog) {

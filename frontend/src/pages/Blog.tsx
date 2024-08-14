@@ -1,27 +1,27 @@
-import { Avatar } from "../components/atoms/Avatar"
+import { useParams } from "react-router-dom"
+import { CompleteBlog } from "../components/CompleteBlog"
+import { useBlog } from "../hooks"
+import { AppBar } from "../components/AppBar"
+
+
 
 export const Blog = () => {
-    return <div className="pt-24 bg-slate-200 h-screen ">
-                <div className="flex w-11/12 max-w-screen-lg mx-auto space-x-4">
-                    <div className="w-9/12 space-y-4">
-                        <div className="space-y-2">
-                            <div className="text-4xl font-bold">Blog heading</div>
-                            <div className="text-sm text-slate-500">Posted on</div>
-                        </div>
-                        <div className="text-base">
-                            Blog content comes here
-                        </div>
-                    </div>
-                    <div className="w-3/12 space-y-2"> 
-                        <div className="text-sm">Author</div>
-                        <div className="flex items-center space-x-2">
-                            <div><Avatar name="Geetpal" size="small"/></div>
-                            <div>
-                                <div className="text-base font-bold">Author Name</div>
-                                <div className="text-base">Author Introduction</div>
-                            </div>
-                        </div>
-                    </div>
+    const {id} = useParams()
+    const {loading, blog}= useBlog({
+        id: Number(id)
+    });
+
+    if(loading){
+        return <div>loading...</div>
+    }
+    
+    
+        return <div>
+                    <AppBar/>
+                    <CompleteBlog blog={blog}/>
                 </div>
-    </div>
+
+        
+
+    
 }

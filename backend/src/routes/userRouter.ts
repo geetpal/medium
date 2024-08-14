@@ -23,6 +23,7 @@ userRouter.post('/signup', async (c) => {
     const body = await c.req.json()
     const prisma = c.get('prisma')
 
+    console.log("hello")
     const { success } = signupInput.safeParse(body)
     if (!success) {
         c.status(400);
@@ -42,9 +43,7 @@ userRouter.post('/signup', async (c) => {
     }
     catch (e) {
         c.status(403)
-        return c.json({
-            error: "User already exists, try unique email id"
-        })
+        return c.json({ error: "Server Error" })
     }
 })
 
@@ -84,7 +83,7 @@ userRouter.post('/signin', async (c) => {
     catch (e) {
         c.status(403);
         return c.json({
-            error: "Error during signin"
+            error: "Server error during signin"
         })
     }
 })
