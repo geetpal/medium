@@ -8,6 +8,7 @@ import { withAccelerate } from '@prisma/extension-accelerate'
 import { JWTPayload } from 'hono/utils/jwt/types';
 
 
+import { cors } from 'hono/cors'
 
 //Initializing hono with the bindings (required details present in other files) and variables (vars that are being used in the code to access the value)
 const app = new Hono<{
@@ -21,13 +22,15 @@ const app = new Hono<{
   }
 }>()
 
+app.use('/*', cors())
+
 
 //Middleware to initiate/create prisma client
 app.use('*', async (c, next) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
-  
+
   const test = prisma.user
 
   c.set("prisma", prisma)

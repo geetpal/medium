@@ -43,7 +43,7 @@ userRouter.post('/signup', async (c) => {
     catch (e) {
         c.status(403)
         return c.json({
-            error: "User cant be created, make sure your email is unique"
+            error: "User already exists, try unique email id"
         })
     }
 })
